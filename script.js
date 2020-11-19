@@ -1,6 +1,7 @@
 // 1. Il computer deve generare 16 numeri casuali tra 1 e 100.
 // 2. I numeri non possono essere duplicati.
-// 3. In seguito deve chiedere all’utente (100 - 16) volte di inserire un numero alla volta,
+// 3. In seguito deve chiedere all’utente (100 - 16) volte di inserire
+//    un numero alla volta,
 //   sempre compreso tra 1 e 100.
 //   L’utente non può inserire più volte lo stesso numero.
 // 4. Se il numero è presente nella lista dei numeri generati, la partita termina,
@@ -40,51 +41,15 @@ while (cpuNumbers.length < 16) {
   }
 }
 console.log(cpuNumbers);
+var userNumbers = [];
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// var duplicates = [];
-// var compare = [];
-// for (var i = 0; i < cpuNumber.length; i++) {
-//   if (!compare.includes(cpuNumber[i])) {
-//     compare.push(cpuNumber[i]);
-//   } else {
-//     duplicates.push(cpuNumber[i]);
-//     }
-//   }
-//
-// console.log('compare array', compare);
-// console.log('duplicates array', duplicates);
-// console.log('cpuNumber array', cpuNumber);
+while (userNumbers.length < 5) {
+  var numberUser = parseInt(prompt('inserisci un numero tra 1 e 100'));
+  if (numberUser <= 100 && numberUser >= 1 ) {
+    var alreadyExistUser = duplicatesCheck(numberUser, userNumbers)
+    if (alreadyExistUser == false) {
+      userNumbers.push(numberUser);
+    }
+  }
+  console.log(userNumbers);
+}
