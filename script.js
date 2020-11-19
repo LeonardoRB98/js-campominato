@@ -16,13 +16,75 @@
 function randomNumber() {
   return Math.floor(Math.random()* 100)+1;;
 }
+
+function duplicatesCheck(num, array) {
+  var exist = false;
+  for (var i = 0; i < array.length; i++) {
+    if (array[i] == num) {
+      exist = true;
+    }
+  }
+  return exist;
+}
+
 // -------------------------------------------------------------------------------
 
 
-var cpuNumber= [];
-for(var i = 0; i <= 16; i++) {
-  cpuNumber.push(randomNumber());
-}
-var i = 0;
+var cpuNumbers = [];
 
-console.log(cpuNumber);
+while (cpuNumbers.length < 16) {
+  var number = randomNumber();
+  var alreadyExist = duplicatesCheck(number, cpuNumbers);
+  if (alreadyExist == false) {
+    cpuNumbers.push(number);
+  }
+}
+console.log(cpuNumbers);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// var duplicates = [];
+// var compare = [];
+// for (var i = 0; i < cpuNumber.length; i++) {
+//   if (!compare.includes(cpuNumber[i])) {
+//     compare.push(cpuNumber[i]);
+//   } else {
+//     duplicates.push(cpuNumber[i]);
+//     }
+//   }
+//
+// console.log('compare array', compare);
+// console.log('duplicates array', duplicates);
+// console.log('cpuNumber array', cpuNumber);
