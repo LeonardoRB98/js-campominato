@@ -32,7 +32,9 @@ function duplicatesCheck(num, array) {
 
 
 var cpuNumbers = [];
-
+var userNumbers = [];
+var score =  0;
+var attempts = 5;
 while (cpuNumbers.length < 16) {
   var number = randomNumber();
   var alreadyExist = duplicatesCheck(number, cpuNumbers);
@@ -41,15 +43,24 @@ while (cpuNumbers.length < 16) {
   }
 }
 console.log(cpuNumbers);
-var userNumbers = [];
 
-while (userNumbers.length < 5) {
+
+while (userNumbers.length < attempts) {
   var numberUser = parseInt(prompt('inserisci un numero tra 1 e 100'));
-  if (numberUser <= 100 && numberUser >= 1 ) {
-    var alreadyExistUser = duplicatesCheck(numberUser, userNumbers)
-    if (alreadyExistUser == false) {
-      userNumbers.push(numberUser);
-    }
+
+  if (duplicatesCheck(numberUser, userNumbers) == false && duplicatesCheck(numberUser, cpuNumbers) == false) {
+    userNumbers.push(numberUser);
+    score += 1;
+
+  } else if (duplicatesCheck(numberUser, userNumbers) == true){
+    alert('hai perso, hai inserito 2 volte lo stesso numero!');
+    userNumbers.length = attempts;
+  } else {
+    alert('hai perso bomba esplosa!')
+    userNumbers.length = attempts;
   }
   console.log(userNumbers);
 }
+
+  console.log(userNumbers);
+  console.log('score: ', score);
