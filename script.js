@@ -34,7 +34,7 @@ function duplicatesCheck(num, array) {
 var cpuNumbers = [];
 var userNumbers = [];
 var score =  0;
-var attempts = 5;
+var attempts = difficultyLevel - 16;
 while (cpuNumbers.length < 16) {
   var number = randomNumber();
   var alreadyExist = duplicatesCheck(number, cpuNumbers);
@@ -43,24 +43,36 @@ while (cpuNumbers.length < 16) {
   }
 }
 console.log(cpuNumbers);
-
-
+do {
+  var difficultyLevel = parseInt(prompt('scegli il livello di difficoltà \nfacil= 1 \nmedia = 2 \ndifficile = 3'))
+} while (difficultyLevel > 3 || difficultyLevel <= 0);
+console.log('livello di difficoltà', difficultyLevel);
+if (difficultyLevel = 3) {
+  attempts = 50;
+} else if (difficultyLevel == 2){
+  attempts = 80;
+} else {
+  attempts = 100;
+}
+console.log(attempts);
 while (userNumbers.length < attempts) {
-  var numberUser = parseInt(prompt('inserisci un numero tra 1 e 100'));
+  var numberUser = parseInt(prompt('inserisci un numero tra 1 e ' + attempts.value));
 
   if (duplicatesCheck(numberUser, userNumbers) == false && duplicatesCheck(numberUser, cpuNumbers) == false) {
     userNumbers.push(numberUser);
     score += 1;
-
-  } else if (duplicatesCheck(numberUser, userNumbers) == true){
+  } else if (duplicatesCheck(numberUser, userNumbers) == true) {
     alert('hai perso, hai inserito 2 volte lo stesso numero!');
     userNumbers.length = attempts;
-  } else {
-    alert('hai perso bomba esplosa!')
-    userNumbers.length = attempts;
-  }
-  console.log(userNumbers);
+    } else {
+      alert('hai perso bomba esplosa!')
+      userNumbers.length = attempts;
+    }
+  console.log('user number',userNumbers);
+}
+if (score == attempts - 16){
+  alert('hai vinto!')
 }
 
-  console.log(userNumbers);
+  console.log('user numbers', userNumbers);
   console.log('score: ', score);
